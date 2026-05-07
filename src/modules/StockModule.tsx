@@ -530,22 +530,24 @@ const StockModule: React.FC = () => {
                           <div style={{padding:'12px 14px',fontSize:13,color:S.textMuted,textAlign:'center'}}>
                             {itemMasterState.length===0?'Item Master not loaded':'No items match'}
                           </div>
-                        ):filteredItemOptions.map(item=>(
-                          <div
-                            key={item.id||item.itemCode}
-                            className="sk-dd-item"
-                            onMouseDown={e=>{e.preventDefault();handleSelectItem(item);}}
-                            style={{
-                              padding:'9px 14px',fontSize:14,cursor:'pointer',
-                              display:'flex',alignItems:'center',justifyContent:'space-between',
-                              borderBottom:`1px solid ${S.border}`,transition:'background 0.1s',
-                              background: form.itemCode===item.itemCode ? S.accentLight : '#fff',
-                            }}
-                          >
-                            <span style={{fontWeight:600,color:S.textPrimary}}>{item.itemName}</span>
-                            <span style={{fontSize:12,color:S.textMuted,fontFamily:'monospace',marginLeft:10,flexShrink:0}}>{item.itemCode}</span>
-                          </div>
-                        ))}
+                        ):(
+                          filteredItemOptions.map(item=>(
+                            <div
+                              key={item.id||item.itemCode}
+                              className="sk-dd-item"
+                              onMouseDown={e=>{e.preventDefault();handleSelectItem(item);}}
+                              style={{
+                                padding:'9px 14px',fontSize:14,cursor:'pointer',
+                                display:'flex',alignItems:'center',justifyContent:'space-between',
+                                borderBottom:`1px solid ${S.border}`,transition:'background 0.1s',
+                                background: form.itemCode===item.itemCode ? S.accentLight : '#fff',
+                              }}
+                            >
+                              <span style={{fontWeight:600,color:S.textPrimary}}>{item.itemName}</span>
+                              <span style={{fontSize:12,color:S.textMuted,fontFamily:'monospace',marginLeft:10,flexShrink:0}}>{item.itemCode}</span>
+                            </div>
+                          ))
+                        )}
                       </div>
                     )}
                   </div>
